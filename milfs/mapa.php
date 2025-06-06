@@ -18,14 +18,24 @@
 
 <div id='map'></div>
 <?php 
-	if ($_REQUEST[lat] !='') {$lat=$_REQUEST[lat];}else {$lat= "-75.5570125579834";}
-	if ($_REQUEST[lon] !='') {$lon=$_REQUEST[lon];}else {$lon= "6.2463742841860";}
+        if ($_REQUEST[lat] !='') {
+                $lat = $_REQUEST[lat];
+        } else {
+                # Default latitude for Medellín, Colombia
+                $lat = "6.2463742841860";
+        }
+        if ($_REQUEST[lon] !='') {
+                $lon = $_REQUEST[lon];
+        } else {
+                # Default longitude for Medellín, Colombia
+                $lon = "-75.5570125579834";
+        }
 	if ($_REQUEST[zoom] !='') {$zoom=$_REQUEST[zoom];}else {$zoom= "16";}
 	
  ?>
 <script>
 var map = L.map('map')
-   .setView([<?php echo $lon ?>, <?php echo $lat ?>], <?php echo $zoom ?>);
+   .setView([<?php echo $lat ?>, <?php echo $lon ?>], <?php echo $zoom ?>);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 function onLocationFound(e) {
 			var radius = e.accuracy / 2;
@@ -45,7 +55,7 @@ var mapa = window.parent.document.getElementById('<?php echo $_REQUEST[id]?>');
 
 function onLocationError(e) {
 			//alert(e.message);
-			var marker = L.marker([<?php echo $lon ?>,<?php echo $lat ?>],{draggable: true}).addTo(map);
+                        var marker = L.marker([<?php echo $lat ?>, <?php echo $lon ?>], {draggable: true}).addTo(map);
 			var mapa = window.parent.document.getElementById('<?php echo $_REQUEST[id]?>');
 			marker.on('dragend', ondragend);
 			ondragend();
@@ -64,7 +74,7 @@ map.locate({setView: true, maxZoom: 16});
 //var lng = window.parent.document.getElementById('lon');
 //var mapa = window.parent.document.getElementById('<?php echo $_REQUEST[id]?>');
 
-//var marker = L.marker([<?php echo $lon ?>,<?php echo $lat ?>],{draggable: true}).addTo(map);
+//var marker = L.marker([<?php echo $lat ?>, <?php echo $lon ?>], {draggable: true}).addTo(map);
 
 
 
