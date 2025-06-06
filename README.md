@@ -85,3 +85,9 @@ Twitter: @fredy_rivera
 	 @QWERTY.CO
 http://qwerty.co/milfs
  
+
+## Actualización de compatibilidad
+
+Se actualizó el archivo `funciones/conex.php` para usar `mysqli` y se añadieron
+funciones de compatibilidad que permiten ejecutar el código en versiones
+recientes de PHP.
